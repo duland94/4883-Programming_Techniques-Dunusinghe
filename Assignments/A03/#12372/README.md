@@ -1,4 +1,4 @@
-## 11172 - 12372 - Packing for Holiday
+## 12372 - Packing for Holiday
 ### Dulan Dunusinghe 
 ### Description:
 

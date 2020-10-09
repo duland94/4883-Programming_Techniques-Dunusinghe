@@ -6,7 +6,6 @@
 //
 /////////////////////////////////////////////////////////////////////////////////
 #include <iostream>
-#include <fstream>
 #include <queue>
 #include <stack>
 #include <string>
@@ -14,16 +13,13 @@
 using namespace std;
 
 int main(){
-  ifstream Cin;  //Declare Cin
-  Cin.open("input.txt");    //open input file
-  
   //CREATE DATA STRUCTURES-------------------------
   string T; 
   stack<string> S; 
   queue<char> Q; 
   //------------------------------------------------
 
-  while(getline(Cin,T)){
+  while(getline(cin,T)){
     //VARIABLES-------------------------------------
     string s ="i", t = ""; 
     //-----------------------------------------------

@@ -12,27 +12,23 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #include <iostream>
-#include <fstream>
 
 using namespace std;
 
 int main(){
-  ifstream Cin;
-  Cin.open("input.txt");
-
   int T;
   int money;
   int donation;
   string operation;
   
-  Cin >> T;
+  cin >> T;
   money = 0;
 
   for(int i = 0; i < T; i++){
-    Cin >> operation;
+    cin >> operation;
 
     if(operation == "donate"){
-      Cin >> donation;
+      cin >> donation;
       money += donation;
     }
     

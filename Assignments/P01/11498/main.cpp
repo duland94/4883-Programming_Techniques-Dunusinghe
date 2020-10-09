@@ -11,22 +11,19 @@
 //
 /////////////////////////////////////////////////////////////////////////////////
 #include <iostream>
-#include <fstream>
 
 using namespace std;
 
 int main(){
-  ifstream Cin;
-  Cin.open("input.txt");
 
   int K,X,Y, divX,divY;
 
-  Cin>>K;
+  cin>>K;
   while(K!=0){
-    Cin>> divX >> divY;
+    cin>> divX >> divY;
 
     for(int i=0;i<K;i++){
-        Cin>> X >> Y;
+        cin>> X >> Y;
 
         if(X > divX)
       {
@@ -49,6 +46,6 @@ int main(){
       else
         cout << "divisa" << endl;
     }
-    Cin>>K;
+    cin>>K;
   }
 }

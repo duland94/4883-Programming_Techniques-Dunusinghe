@@ -12,23 +12,19 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #include <iostream>
-#include <fstream>
 
 using namespace std;
 
 int main(){
-  ifstream Cin;
-  Cin.open("input.txt");
-
   int T;
   int S[3];
 
-  Cin >> T;
+  cin >> T;
 
   for(int i = 0; i < T; i++){
-    Cin >> S[0];
-    Cin >> S[1];
-    Cin >> S[2];
+    cin >> S[0];
+    cin >> S[1];
+    cin >> S[2];
     for(int j = 0; j < 2; j++)
     {
       for(int k = 0; k < 2 - j; k++)

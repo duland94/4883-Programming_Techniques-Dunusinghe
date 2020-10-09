@@ -11,24 +11,20 @@
 //
 /////////////////////////////////////////////////////////////////////////////////
 #include <iostream>
-#include <fstream>
 
 using namespace std;
 
 int main() {
-  ifstream Cin;
-  Cin.open("input.txt");
-
   int x;
   int y;
   int z;
 
-  Cin>>x;
+  cin>>x;
 
   for(int i = 0; i < x; i++)
   {
-    Cin >> y;
-    Cin >> z;
+    cin >> y;
+    cin >> z;
     if (y < z)
       cout << "<" <<endl;
     else if(y > z)

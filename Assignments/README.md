@@ -8,7 +8,7 @@
 |    4   | [P02](./P02) | Stacks (Program Set 2)                    |
 |    5   | [P03](./P03) | Queues (Program Set 3)                    |             
 |    6   | [P04](./P04) | Queues (Program Set 4)                    |
-|    7   | [P02](./P02) | Stacks                                    |
+|    7   | [P05](./P05) | Basic Geometry(UVa 00920 - Sunny Mountains)                                   |
 |    8   | [P02](./P02) | Stacks                                    |
 |    9   | [P02](./P02) | Stacks                                    |
 

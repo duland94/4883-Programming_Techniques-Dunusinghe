@@ -2,9 +2,9 @@
 
 |    #   | Folder Link  | Assignment Description                    |
 | :----: | ------------ | ----------------------------------------- |
-|    1   | [A03](./A03) | Problem Solving Presentation                        |
-|    2   | [A04](./A04) | Binary Trees                                |
-|    3   | [P02](./P02) | Stacks                                    |
+|    1   | [A03](./A03) | Problem Solving Presentation              |
+|    2   | [A04](./A04) | Binary Trees                              |
+|    3   | [P01](./P01) | Simple Problem Set                                    |
 |    4   | [P02](./P02) | Stacks                                    |
 |    5   | [P02](./P02) | Stacks                                    
 |    6   | [P02](./P02) | Stacks                                    |

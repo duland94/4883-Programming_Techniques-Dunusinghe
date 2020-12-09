@@ -10,7 +10,7 @@
 |    6   | [P04](./P04) | Queues (Program Set 4)                    |
 |    7   | [P05](./P05) | Basic Geometry(UVa 00920 - Sunny Mountains)                                   |
 |    8   | [P06](./P06) | Program Set 6 - Recursion (UVa 10017 - The Never Ending Towers of Hanoi)    |
-|    9   | [P07](./P07) | Kinda Easy Peasy                                    |
+|    9   | [P07](./P07) | Kinda Easy Peasy - UVa 10194 football problem                                    |
 |    9   | [P08](./P08) | Program Set 8 - 10226 Hardwood Species      |
 |    9   | [P09](./P09) | UVa - Mete Loopless Sort                   |
 

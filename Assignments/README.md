@@ -2,7 +2,7 @@
 
 |    #   | Folder Link  | Assignment Description                    |
 | :----: | ------------ | ----------------------------------------- |
-|    1   | [P01](./A03) | Simple Problem Set                        |
+|    1   | [A03](./A03) | Problem Solving Presentation                        |
 |    2   | [P02](./P02) | Stacks                                    |
 |    3   | [P02](./P02) | Stacks                                    |
 |    4   | [P02](./P02) | Stacks                                    |

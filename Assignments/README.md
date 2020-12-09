@@ -4,7 +4,7 @@
 | :----: | ------------ | ----------------------------------------- |
 |    1   | [A03](./A03) | Problem Solving Presentation              |
 |    2   | [A04](./A04) | Binary Trees                              |
-|    3   | [P01](./P01) | Simple Problem Set                        |
+|    3   | [P01](./P01) | Simple Problem Set 1 (11172 - Relational Operator,11498 - Division of Nlogonia,11727 - Cost Cutting,12372 - Packing for Holiday,12403 - Save Setu)    |
 |    4   | [P02](./P02) | Stacks (Program Set 2)                    |
 |    5   | [P03](./P03) | Queues (Program Set 3)                    |             
 |    6   | [P04](./P04) | Queues (Program Set 4)                    |

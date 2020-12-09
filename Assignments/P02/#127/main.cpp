@@ -17,73 +17,129 @@
 //
 /////////////////////////////////////////////////////////////////////////////////
 
-#include <iostream>
-#include <fstream>
+#include <cassert>
+#include <iomanip>
 #include <iostream>
 #include <vector>
-#include <stack>
-#include <string>
 
-using namespace std;
+enum {
+#ifdef ONLINE_JUDGE
+  DEBUG = 0,
+#else
+  DEBUG = 1,
+#endif
+};
 
-int main(){
-  ifstream Cin;
-  Cin.open("input.txt");
+struct Card {
+  static const Card ZERO;
 
-  vector<stack<string>> dk(52);
-  bool running = true;
-  string C;
+  Card();
+  explicit operator bool() const;
 
-  while (running){                     
-        for (int i = 0; i < dk.size(); i++){
-          Cin >> C;
-          if (C == "#"){
-                i = 100;
-                running = false;}
-          else
-                dk[i].push(C);
-         }
-    
-  if (!running)
-            break;
+  char suit, face;
+};
 
-  for (int i = 1; i < dk.size(); i++){
-            if (i >= 3 && 
-            (dk[i].top().at(0) == dk[i - 3].top().at(0) 
-            || dk[i].top().at(1) == dk[i - 3].top().at(1))){
+std::istream& operator>>(std::istream& in, Card& card);
+std::ostream& operator<<(std::ostream& out, const Card& card);
 
-                dk[i - 3].push(dk[i].top());
-                dk[i].pop();
+bool operator==(const Card& lhs, const Card& rhs);
+bool operator!=(const Card& lhs, const Card& rhs);
 
-                if (dk[i].empty()){
-                    dk.erase(dk.begin() + i, dk.begin()+(i + 1));
-                }
-                i -= 4;                                         
-            }
-            if (i >= 1 && 
-            (dk[i].top().at(0) == dk[i - 1].top().at(0) 
-            || dk[i].top().at(1) == dk[i - 1].top().at(1))){
+const Card Card::ZERO;
 
-                dk[i - 1].push(dk[i].top());
-                dk[i].pop();
-
-                if (dk[i].empty()){
-                    dk.erase(dk.begin() + i, dk.begin()+(i + 1));                               }
-                i -= 2;}
-        }
-
-        if(dk.size() == 1)
-            cout << dk.size() << " pile remaining: ";
-        else
-            cout << dk.size() << " piles remaining: ";
-        
-        for (int i = 0; i < dk.size(); i++){
-            cout << dk[i].size();
-
-            if(i != dk.size() - 1)
-                cout << ' ';  
-        }
-        cout << endl;
-        
+int main() {
+  for (Card deck[52]; std::cin >> deck[0] && deck[0];) {
+    for (int i = 1; i < 52; i++) {
+      std::cin >> deck[i];
     }
+    if (DEBUG) {
+      std::cerr << "DECK:";
+      for (int i = 0; i < 52; i++) {
+        std::cerr << ' ' << deck[i];
+      }
+      std::cerr << std::endl;
+    }
+
+    std::vector<Card> piles[52];
+    std::vector<Card>* last = piles;
+    for (const auto& new_card : deck) {
+      assert(last != piles + 52 + 1);
+      if (DEBUG) {
+        for (auto i = piles; i != last; ++i) {
+          std::cerr << " (" << std::setw(2) << std::right << i->size() << ")"
+                    << i->back();
+        }
+        std::cerr << " | " << new_card << std::endl;
+      }
+
+      (last++)->push_back(new_card);
+      bool has_been_moved;
+      do {
+        has_been_moved = false;
+        for (auto i = piles; i != last; ++i) {
+          assert(!i->empty());
+          for (auto j : {i - 3, i - 1}) {
+            if (j < piles) {
+              continue;
+            }
+            assert(!j->empty());
+            const Card& card_i = i->back();
+            const Card& card_j = j->back();
+            if (card_i.suit == card_j.suit || card_i.face == card_j.face) {
+              j->push_back(card_i);
+              i->pop_back();
+              if (i->empty()) {
+                for (auto k = i; k + 1 != last; ++k) {
+                  *k = *(k + 1);
+                }
+                (--last)->clear();
+              }
+              has_been_moved = true;
+              break;
+            }
+          }
+          if (has_been_moved) {
+            break;
+          }
+        }
+      } while (has_been_moved);
+    }
+
+    int num_piles = last - piles;
+    assert(num_piles > 0);
+
+    std::cout << num_piles << " pile" << (num_piles == 1 ? "" : "s")
+              << " remaining:";
+    for (auto i = piles; i != last; ++i) {
+      std::cout << ' ' << i->size();
+    }
+    std::cout << std::endl;
+  }
+  return 0;
 }
+
+Card::Card() : suit('\0'), face('\0') {}
+
+std::istream& operator>>(std::istream& in, Card& card) {
+  std::string str;
+  if (!(in >> str) || str == "#") {
+    card = Card::ZERO;
+    return in;
+  }
+  assert(str.size() == 2);
+  card.face = str[0];
+  card.suit = str[1];
+  return in;
+}
+
+std::ostream& operator<<(std::ostream& out, const Card& card) {
+  return out << card.face << card.suit;
+}
+
+bool operator==(const Card& lhs, const Card& rhs) {
+  return lhs.suit == rhs.suit && lhs.face == rhs.face;
+}
+
+bool operator!=(const Card& lhs, const Card& rhs) { return !(lhs == rhs); }
+
+Card::operator bool() const { return *this != ZERO; }
